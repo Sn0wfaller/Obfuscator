@@ -15,10 +15,6 @@ public class Obfuscating {
     public static final String source = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     public static final String target = "A17yCzqfjKnE3XkwebphaYl8P5i04BQdTVIGcSrUtWgsH6vLuZRDxo2NFJOmM9";
 
-    public void obfuscating() {
-        obfuscating("src\\main\\resources\\orig.xml", "src\\main\\resources\\obfusc.xml");
-    }
-
     public void obfuscating(String fromFile, String toFile) {
         Employees employees = readFromXML(fromFile);
         String res = "";

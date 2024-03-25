@@ -17,10 +17,6 @@ public class Unobfuscating {
     public static final String source = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     public static final String target = "A17yCzqfjKnE3XkwebphaYl8P5i04BQdTVIGcSrUtWgsH6vLuZRDxo2NFJOmM9";
 
-    public void unobfuscating() {
-        unobfuscating("src\\\\main\\\\resources\\\\obfusc.xml", "src\\\\main\\\\resources\\\\unobfusc.xml");
-    }
-
     public void unobfuscating(String fromFile, String toFile) {
         List<String> lines = readFromFile(fromFile);
         Employees employees = new Employees();
