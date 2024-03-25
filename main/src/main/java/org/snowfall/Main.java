@@ -12,7 +12,9 @@ import java.util.Objects;
  */
 
 public class Main {
+
     public static void main(String[] args) {
+
         if (Objects.equals(args[0], "obfusc")) {
 
             Obfuscating obfuscation = new Obfuscating();
