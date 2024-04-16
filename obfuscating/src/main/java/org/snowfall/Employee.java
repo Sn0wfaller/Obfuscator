@@ -9,7 +9,8 @@ public class Employee {
     private String lastName;
     private String location;
 
-    private static final String[] values = new String[] { "id", "firstName", "lastName", "location" };
+    private static final String[] values = new String[] {
+            "id", "firstName", "lastName", "location" };
 
     public static String[] getValues() {
         return values;
@@ -26,7 +27,8 @@ public class Employee {
             case "location":
                 return getLocation();
             default:
-                throw new Exception("Illegal key value " + key + ". Available keys: " + String.join(", ", values));
+                throw new Exception("Illegal key value " + key +
+                        ". Available keys: " + String.join(", ", values));
         }
     }
 
@@ -45,7 +47,8 @@ public class Employee {
                 setLocation(value);
                 break;
             default:
-                throw new Exception("Illegal key value " + key + ". Available keys: " + String.join(", ", values));
+                throw new Exception("Illegal key value " + key +
+                        ". Available keys: " + String.join(", ", values));
         }
     }
 
