@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage("Checkout") {
             steps {
-                git branch: 'develop', url: 'https://github.com/Sn0wfaller/Obfuscator.git'
+                git branch: 'feature/4', url: 'https://github.com/Sn0wfaller/Obfuscator.git'
             }
         }
         stage("Build") {
