@@ -1,7 +1,5 @@
 package org.snowfall;
 
-import java.util.Objects;
-
 import org.apache.log4j.Logger;
 
 /**
@@ -17,20 +15,46 @@ public class Main {
 
     private static final Logger log = Logger.getLogger(Main.class);
 
+    private Obfuscating obfuscation = new Obfuscating();
+    private Unobfuscating unobfuscatiion = new Unobfuscating();
+
     public static void main(String[] args) {
 
-        if (Objects.equals(args[0], "obfusc")) {
+        Main main = new Main();
+        if (args[0].equals("obfusc")) {
 
-            Obfuscating obfuscation = new Obfuscating();
-            obfuscation.obfuscating(args[1], args[2]);
-            log.info("Successfull obfuscating XML");
+            System.out.println(main.obfuscatingData(args[1], args[2]));
+        } else if (args[0].equals("unobfusc")) {
+
+            System.out.println(main.unObfuscatingData(args[1], args[2]));
         }
+    }
 
-        else if (Objects.equals(args[0], "unobfusc")) {
+    public String obfuscatingData(String readFrom, String writeTo) {
 
-            Unobfuscating unobfuscatiion = new Unobfuscating();
-            unobfuscatiion.unobfuscating(args[1], args[2]);
-            log.info("Successfull obfuscating XML");
+        String result = "";
+        try {
+            result = obfuscation.obfuscating(readFrom, writeTo);
+            log.info(result);
+            return result;
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            e.printStackTrace();
         }
+        return result;
+    }
+
+    public String unObfuscatingData(String readFrom, String writeTo) {
+
+        String result = "";
+        try {
+            result = unobfuscatiion.unobfuscating(readFrom, writeTo);
+            log.info(result);
+            return result;
+        } catch (Exception e) {
+            log.info(e.getMessage());
+            e.printStackTrace();
+        }
+        return result;
     }
 }

@@ -15,18 +15,21 @@ public class Obfuscating {
     public static final String source = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
     public static final String target = "A17yCzqfjKnE3XkwebphaYl8P5i04BQdTVIGcSrUtWgsH6vLuZRDxo2NFJOmM9";
 
-    public void obfuscating(String fromFile, String toFile) {
-        Employees employees = readFromXML(fromFile);
+    public String obfuscating(String fromFile, String toFile) {
+
         String res = "";
         try {
+            Employees employees = readFromXML(fromFile);
             res = obfuscateData(employees);
+            writeToFile(res, toFile);
+            return "Successfull obfuscating XML";
         } catch (Exception e) {
             e.printStackTrace();
         }
-        writeToFile(res, toFile);
+        return "Unsuccessfull obfuscating XML";
     }
 
-    private Employees readFromXML(String filePath) {
+    private Employees readFromXML(String filePath) throws Exception {
         Employees employees = new Employees();
         try {
             XmlMapper xmlMapper = new XmlMapper();
