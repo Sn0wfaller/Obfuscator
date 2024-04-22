@@ -9,9 +9,7 @@ pipeline {
         }
         stage("Tests") {
             when {
-                expression {
-                    return env.GIT_BRANCH == "origin/feature/*"
-                }
+                branch 'feature/*'
             }
             steps {
                 bat 'mvn test'
@@ -19,9 +17,7 @@ pipeline {
         }
         stage("Static analyse") {
             when {
-                expression {
-                    return env.GIT_BRANCH == "origin/develop"
-                }
+                branch 'develop'
             }
             steps {
                 bat 'mvn checkstyle:check'
@@ -29,9 +25,7 @@ pipeline {
         }
         stage("Report") {
             when {
-                expression {
-                    return env.GIT_BRANCH == "origin/feature/*"
-                }
+                branch 'feature/*'
             }
             steps {
                 junit testResults: '**/surefire-reports/*.xml'
