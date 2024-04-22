@@ -2,11 +2,6 @@ pipeline {
     agent any
     
     stages {
-        stage("Checkout") {
-            steps {
-                checkout scmGit(branches: [[name: '*/feature/*'], [name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sn0wfaller/Obfuscator/']])
-            }
-        }
         stage("Compile code") {
             steps {
                 bat 'mvn clean compile'
