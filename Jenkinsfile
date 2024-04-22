@@ -2,31 +2,42 @@ pipeline {
     agent any
     
     stages {
+        stage("Checkout") {
+            steps {
+                checkout scmGit(branches: [[name: '*/feature/*'], [name: '*/develop']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/Sn0wfaller/Obfuscator/']])
+            }
+        }
         stage("Compile code") {
             steps {
                 bat 'mvn clean compile'
             }
         }
         stage("Tests") {
-        	when {
-        		branch 'feature/*'
-        	}
+            when {
+                expression {
+                    return env.GIT_BRANCH == "origin/feature/*"
+                }
+            }
             steps {
                 bat 'mvn test'
             }
         }
         stage("Static analyse") {
-        	when {
-        		branch 'develop'
-        	}
+            when {
+                expression {
+                    return env.GIT_BRANCH == "origin/develop"
+                }
+            }
             steps {
                 bat 'mvn checkstyle:check'
             }
         }
         stage("Report") {
             when {
-        		branch 'feature/*'
-        	}
+                expression {
+                    return env.GIT_BRANCH == "origin/feature/*"
+                }
+            }
             steps {
                 junit testResults: '**/surefire-reports/*.xml'
                 jacoco()
