@@ -26,11 +26,17 @@ public class Obfuscating {
             Employees employees = readFromXML(fromFile);
             res = obfuscateData(employees);
             writeToFile(res, toFile);
+            testFunc();
             return "Successfull obfuscating XML";
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "Unsuccessfull obfuscating XML";
+    }
+
+    public void testFunc() {
+
+        System.out.println("12345");
     }
 
     private Employees readFromXML(String filePath) throws Exception {
