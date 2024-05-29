@@ -16,7 +16,7 @@ public class Obfuscating {
     public static final String target = "A17yCzqfjKnE3XkwebphaYl8P5i04BQdTVIGcSrUtWgsH6vLuZRDxo2NFJOmM9";
 
     public String obfuscating(String fromFile, String toFile) {
-
+        blank();
         String res = "";
         try {
             Employees employees = readFromXML(fromFile);
@@ -27,6 +27,10 @@ public class Obfuscating {
             e.printStackTrace();
         }
         return "Unsuccessfull obfuscating XML";
+    }
+
+    public void blank() {
+        System.out.println("source");
     }
 
     private Employees readFromXML(String filePath) throws Exception {
